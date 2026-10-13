@@ -91,4 +91,12 @@ class OnlineSalesRegisterCollector:
                 
         raise ValueError('Необходимо ввести цифры')
 
- 
+    @staticmethod
+    def get_date_and_time():
+        date_and_time = []
+        now = datetime.datetime.now()
+        date = [['часы', lambda x: x.hour],['минуты', lambda x: x.minute],\
+                ['день', lambda x: x.day],['месяц', lambda x: x.month],['год', lambda x: x.year]]
+        for item in date:
+            date_and_time.append(f'{item[0]}: {(item[1])(now)}')
+        return date_and_time
